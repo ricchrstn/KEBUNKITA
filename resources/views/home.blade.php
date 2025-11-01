@@ -1,24 +1,53 @@
 {{-- resources/views/home.blade.php --}}
 <x-app-layout>
     {{-- Hero Section --}}
-    <div class="bg-card border border-border rounded-lg p-6 md:p-8 text-center">
-        @auth
-            <h2 class="text-3xl font-bold text-foreground">Selamat Datang kembali, {{ Auth::user()->name }}! 🌱</h2>
-            <p class="mt-2 text-muted-foreground">Lanjutkan progres Anda dan capai hasil panen terbaik.</p>
-            <a href="{{ route('plants.index') }}"
-                class="inline-block bg-primary text-primary-foreground font-bold py-3 px-6 rounded-md mt-6 hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring transition-all duration-300 transform hover:scale-105">
-                Tanam Sekarang! 🌾
-            </a>
-        @else
-            <h2 class="text-3xl font-bold text-foreground">Selamat Datang di Sistem Pertanian Modern! 🌱</h2>
-            <p class="mt-2 text-muted-foreground max-w-2xl mx-auto">
-                Pantau cuaca, baca berita terbaru, dan kelola tanaman Anda dengan lebih baik.
-            </p>
-            <a href="{{ route('login') }}"
-                class="inline-block bg-primary text-primary-foreground font-bold py-3 px-6 rounded-md mt-6 hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring transition-all duration-300 transform hover:scale-105">
-                Mulai Sekarang! 🌾
-            </a>
-        @endauth
+    <div class="relative overflow-hidden">
+        {{-- Background Pattern --}}
+        <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-card/95 backdrop-blur-sm border border-border rounded-2xl p-8 md:p-12 text-center">
+                @auth
+                    <h2 class="text-4xl font-bold text-foreground bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
+                        Selamat Datang kembali, {{ Auth::user()->name }}! 🌱
+                    </h2>
+                    <p class="mt-4 text-lg text-muted-foreground">
+                        Lanjutkan progres Anda dan capai hasil panen terbaik.
+                    </p>
+                    <div class="mt-8">
+                        <a href="{{ route('plants.index') }}"
+                            class="inline-flex items-center bg-primary text-primary-foreground font-semibold py-3 px-8 rounded-xl hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
+                            <span>Tanam Sekarang!</span>
+                            <span class="ml-2">🌾</span>
+                        </a>
+                    </div>
+                @else
+                    <div class="max-w-3xl mx-auto">
+                        <h2 class="text-4xl md:text-5xl font-bold text-foreground bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
+                            Masa Depan Pertanian Ada di Tangan Anda! 🌱
+                        </h2>
+                        <p class="mt-6 text-lg text-muted-foreground leading-relaxed">
+                            KebunKita hadir untuk membantu Anda mengelola pertanian dengan lebih modern dan efisien. 
+                            Pantau cuaca, dapatkan wawasan, dan tingkatkan hasil panen Anda.
+                        </p>
+                        <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
+                            <a href="{{ route('login') }}"
+                                class="w-full sm:w-auto inline-flex items-center justify-center bg-primary text-primary-foreground font-semibold py-3 px-8 rounded-xl hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
+                                <span>Mulai Sekarang</span>
+                                <span class="ml-2">🌾</span>
+                            </a>
+                            <a href="{{ route('register') }}"
+                                class="w-full sm:w-auto inline-flex items-center justify-center bg-card border border-border text-foreground font-semibold py-3 px-8 rounded-xl hover:bg-card/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring transition-all duration-300 transform hover:-translate-y-1">
+                                <span>Daftar Gratis</span>
+                                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                @endauth
+            </div>
+        </div>
     </div>
 
     {{-- Statistics Overview --}}
@@ -99,51 +128,6 @@
         <div class="h-64" id="plantTypesChart"></div>
     </div>
     @endauth
-
-    {{-- Bagian Berita Unggulan --}}
-    <div class="mt-12">
-        <div class="flex items-center justify-between mb-8">
-            <div class="space-y-1">
-                <h3 class="text-2xl font-bold text-foreground">Berita Pertanian Unggulan</h3>
-                <p class="text-muted-foreground">Informasi terkini seputar dunia pertanian</p>
-            </div>
-            <a href="{{ route('news.index') }}" 
-                class="inline-flex items-center px-4 py-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all duration-200 group">
-                <span class="group-hover:mr-2 transition-all duration-300">Lihat Semua</span>
-                <svg class="w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-1" 
-                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                </svg>
-            </a>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            @forelse ($articles as $article)
-                <x-article-card :article="$article" />
-            @empty
-                <div class="md:col-span-3">
-                    <div class="bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-8 text-center">
-                        <svg class="w-16 h-16 mx-auto text-muted-foreground/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                        <h3 class="mt-4 text-lg font-medium text-foreground">Tidak ada berita</h3>
-                        <p class="mt-2 text-muted-foreground">
-                            Tidak dapat memuat berita saat ini. Silakan coba lagi nanti.
-                        </p>
-                        <button onclick="window.location.reload()" 
-                            class="mt-4 inline-flex items-center px-4 py-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all duration-200 group">
-                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
-                            </svg>
-                            <span class="group-hover:mr-2 transition-all duration-300">Coba Lagi</span>
-                        </button>
-                    </div>
-                </div>
-            @endforelse
-        </div>
-    </div>
 
     @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>

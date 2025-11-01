@@ -50,27 +50,29 @@
             @if ($weather)
                 <details class="bg-card border border-border rounded-2xl shadow-md group" open>
                     <summary class="p-5 flex items-center justify-between cursor-pointer">
-                                                <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-4">
                             @if ($weather['summary']['dominant_weather'])
-                                <img src="https://openweathermap.org/img/wn/{{ $weather['summary']['dominant_weather']['icon'] }}@2x.png" 
-                                     alt="Weather" 
-                                     class="w-12 h-12"
-                                />
+                                <img src="https://openweathermap.org/img/wn/{{ $weather['summary']['dominant_weather']['icon'] }}@2x.png"
+                                     alt="Weather" class="w-12 h-12" />
                             @endif
                             <div>
-                                <h4 class="font-bold text-lg text-foreground">Cuaca 24 Jam di
-                                    {{ $weather['city_name'] }}</h4>
-                                {{-- ✅ PENAMBAHAN JAM REAL-TIME --}}
-                                <div class="flex items-center gap-2 text-muted-foreground text-sm">
+                                <h4 class="font-bold text-lg text-foreground">
+                                    Cuaca 24 Jam di {{ $weather['city_name'] }}
+                                </h4>
+                                
+                                {{-- ✅ JAM DAN SUHU RAPI DALAM SATU BARIS --}}
+                                <div class="flex flex-wrap md:flex-nowrap items-center gap-2 text-muted-foreground text-sm whitespace-nowrap">
                                     <span>Suhu: {{ $weather['summary']['min_temp'] }}°C -
                                         {{ $weather['summary']['max_temp'] }}°C</span>
                                     <span class="font-bold">·</span>
-                                    <span id="current-time-display" class="font-semibold text-foreground"></span>
+                                    <span id="current-time-display" class="font-semibold text-foreground transition-opacity duration-300"></span>
                                 </div>
+
                                 <span class="text-primary font-medium">Klik untuk detail.</span>
+                            </div>
+                        </div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19 9l-7 7-7-7" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                         </svg>
                     </summary>
 
@@ -94,12 +96,10 @@
                                     <p class="text-sm font-semibold text-foreground">
                                         {{ \Carbon\Carbon::parse($forecast['dt_txt'])->format('H:i') }}
                                     </p>
-                                                                    <div
-                                        class="mx-auto my-1 w-12 h-12 flex items-center justify-center bg-background/50 rounded-full">
-                                        <img src="https://openweathermap.org/img/wn/{{ $forecast['weather'][0]['icon'] }}@2x.png" 
-                                             alt="Weather"
-                                             class="w-12 h-12"
-                                        />
+                                    <div class="mx-auto my-1 w-12 h-12 flex items-center justify-center bg-background/50 rounded-full">
+                                        <img src="https://openweathermap.org/img/wn/{{ $forecast['weather'][0]['icon'] }}@2x.png"
+                                             alt="Weather" class="w-12 h-12" />
+                                    </div>
                                     <p class="text-sm text-muted-foreground">
                                         {{ round($forecast['main']['temp']) }}°C
                                     </p>
@@ -133,6 +133,7 @@
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 const timeDisplay = document.getElementById('current-time-display');
+
                 function updateTime() {
                     if (timeDisplay) {
                         const now = new Date();
@@ -142,6 +143,7 @@
                         timeDisplay.textContent = `Jam: ${timeString}`;
                     }
                 }
+
                 updateTime();
                 setInterval(updateTime, 1000);
 
