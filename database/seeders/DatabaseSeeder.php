@@ -15,9 +15,14 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // Use updateOrCreate so seeding is idempotent and won't fail on duplicate emails
+        User::updateOrCreate(
+            ['email' => 'test@example.com'],
+            [
+                'name' => 'Test User',
+                'location' => 'Unknown',
+                'password' => bcrypt('password'),
+            ]
+        );
     }
 }

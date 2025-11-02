@@ -1,206 +1,106 @@
-<p align="center"><a href="https://github.com/ricchrstn/KEBUNKITA" target="_blank"><img src="public/img/Modern%20Logo%20with%20House%20and%20Leaf%20Emblem.png" width="180" alt="KebunKita Logo"></a></p>
-
-# KebunKita
-
-KebunKita adalah aplikasi web komunitas dan manajemen tanaman: menampilkan berita pertanian, forum diskusi, pemantauan tanaman, rekomendasi berdasarkan cuaca, dan manajemen profil pengguna. Proyek ini dibangun dengan Laravel dan Tailwind CSS.
-
-![Dashboard](screenshots/dashboard.png)
-<p align="center"><a href="https://regumawar.wuaze.com/" target="_blank"><img src="public/img/ZeroHunger.png" width="200" alt="Logo Sistem Pertanian"></a></p>
-
-<h1 align="center">Sistem Pertanian Terpadu (Smart Farming System)</h1>
-
 <p align="center">
-    <a href="https://github.com/RidhoChaerullah/UAS-ParaPetani/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-    <a href="#"><img src="https://img.shields.io/badge/PHP-8.4.1-777BB4?style=flat-square&logo=php" alt="PHP Version"></a>
-    <a href="#"><img src="https://img.shields.io/badge/Laravel-12.21.0-FF2D20?style=flat-square&logo=laravel" alt="Laravel Version"></a>
-    <a href="#"><img src="https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white" alt="Tailwind CSS Version"></a>
+  <a href="https://github.com/ricchrstn/KEBUNKITA" target="_blank">
+    <img src="public/img/Modern%20Logo%20with%20House%20and%20Leaf%20Emblem.png" width="180" alt="KebunKita Logo">
+  </a>
 </p>
 
-Proyek ini adalah aplikasi web yang dibangun untuk memenuhi Ujian Akhir Semester mata kuliah Pemrograman Web Lanjut. Dengan mengacu pada tujuan SDGs ke-2 (Zero Hunger), aplikasi ini berfungsi sebagai "Sistem Pemantauan Cuaca, Berita Pertanian dan Manajemen Tanaman untuk Para Petani".
+<h1 align="center">🌿 KebunKita</h1>
 
-## ✨ Demo Langsung
+<p align="center">
+  Aplikasi web komunitas dan manajemen tanaman berbasis Laravel & Tailwind CSS.
+</p>
 
-Anda dapat mencoba aplikasi secara langsung melalui tautan berikut:
-
-**URL:** **https://regumawar.wuaze.com/**
-
-Gunakan akun demo di bawah ini untuk login:
-- **Email:** `akuncoba@gmail.com`
-- **Password:** `akuncoba`
-
-## 📸 Tampilan Aplikasi
-
-![Tampilan Aplikasi](screenshots/dashboard.png)
-![Tampilan Aplikasi](screenshots/pantau_tanaman.png)
-
-## 🚀 Fitur Utama
-
--   📰 **Berita Pertanian:** Menampilkan berita terkini seputar dunia pertanian yang diambil langsung dari **NewsAPI**.
--   🌽 **Manajemen Tanaman:** Memantau dan mengelola data tanaman pangan (saat ini mendukung Padi dan Jagung).
--   🌦️ **Saran Berdasarkan Cuaca:** Memberikan rekomendasi pengolahan tanaman berdasarkan data cuaca real-time dari **OpenWeather API**.
--   👤 **Manajemen Akun:** Fitur lengkap untuk Registrasi, Login, serta mengubah dan menghapus akun pengguna.
-
-## 🛠️ Teknologi yang Digunakan
-
--   **Backend:** PHP 8.4.1, Laravel 12.21.0
--   **Frontend:** Tailwind CSS
--   **Database:** MySQL
--   **API Eksternal:**
-    -   https://newsapi.org/ untuk data berita.
-    -   https://openweathermap.org/api untuk data cuaca.
-
-## ⚙️ Petunjuk Instalasi Lokal
-
-Untuk menjalankan proyek ini di lingkungan lokal Anda, ikuti langkah-langkah berikut:
-
-#### 1. Prasyarat
-Pastikan perangkat Anda sudah terinstal:
--   PHP >= 8.4
--   Composer 2.x
--   Node.js & NPM
--   Database (misalnya: MySQL, MariaDB)
-
-#### 2. Langkah Instalasi
-
-1.  **Clone repositori ini:**
-    ```bash
-    git clone [https://github.com/RidhoChaerullah/UAS-ParaPetani.git](https://github.com/RidhoChaerullah/UAS-ParaPetani.git)
-    cd UAS-ParaPetani
-    ```
-
-2.  **Instal dependensi Composer:**
-    ```bash
-    composer install
-    ```
-
-3.  **Instal dependensi NPM:**
-    ```bash
-    npm install
-    ```
-
-4.  **Buat file `.env`:**
-    Salin file `.env.example` menjadi `.env`.
-    ```bash
-    cp .env.example .env
-    ```
-
-5.  **Konfigurasi file `.env`:**
-    Buka file `.env` dan sesuaikan konfigurasi database Anda. **PENTING:** Masukkan juga API Key Anda dari NewsAPI dan OpenWeather.
-    ```.env
-    DB_CONNECTION=mysql
-    DB_HOST=127.0.0.1
-    DB_PORT=3306
-    DB_DATABASE=nama_database_anda
-    DB_USERNAME=root
-    DB_PASSWORD=
-
-    # Masukkan API Key Anda di sini
-    NEWS_API_KEY=KEY_DARI_NEWSAPI
-    OPENWEATHER_API_KEY=KEY_DARI_OPENWEATHER
-    ```
-
-6.  **Generate Application Key:**
-    ```bash
-    php artisan key:generate
-    ```
-
-7.  **Jalankan Migrasi Database:**
-    Perintah ini akan membuat semua tabel yang dibutuhkan di database Anda.
-    ```bash
-    php artisan migrate
-    ```
-
-8.  **Compile Aset Frontend:**
-    ```bash
-    npm run dev
-    ```
-    *(Gunakan `npm run build` untuk versi produksi)*
-
-9.  **Jalankan Server Lokal:**
-    ```bash
-    php artisan serve
-    ```
-
-Aplikasi sekarang seharusnya berjalan di **http://127.0.0.1:8000**.
+<p align="center">
+  <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+  <a href="#"><img src="https://img.shields.io/badge/PHP-8.4.1-777BB4?style=flat-square&logo=php" alt="PHP Version"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Laravel-12.21.0-FF2D20?style=flat-square&logo=laravel" alt="Laravel Version"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white" alt="Tailwind CSS Version"></a>
+</p>
 
 ---
 
-## 🎓 Tugas Ujian Akhir Semester - Pemrograman Web Lanjut
+## 📖 Deskripsi Proyek
 
-Proyek ini dibuat sebagai bagian dari tugas Ujian Akhir Semester mata kuliah Pemrograman Web Lanjut.
+**KebunKita** adalah aplikasi web berbasis Laravel yang berfungsi sebagai **Sistem Pemantauan Cuaca, Berita Pertanian, dan Manajemen Tanaman untuk Para Petani**, mendukung **tujuan Sustainable Development Goals (SDGs) ke-2: Zero Hunger**.
 
-## Fitur utama
+Aplikasi ini menyediakan fitur berita pertanian terkini, pemantauan tanaman pangan (padi & jagung), forum diskusi komunitas, serta saran pengolahan tanaman berdasarkan kondisi cuaca real-time.
 
-- 📰 Berita pertanian (NewsAPI)
-- 💬 Forum tanya-jawab (pertanyaan & jawaban, tanda jawaban terbaik)
-- 🌱 Manajemen tanaman (tambah/hapus tanaman)
-- 🌦️ Informasi cuaca & rekomendasi untuk tanaman (OpenWeather)
-- 👤 Manajemen akun (registrasi, login, edit profil)
+---
 
-## Teknologi
+## 🌐 Demo Langsung
 
-- PHP >= 8.2
-- Laravel ^12
-- Tailwind CSS
-- MySQL (atau MariaDB)
+- **URL:** [https://kebunkita.wuaze.com/](https://kebunkita.wuaze.com/)
+- **Akun Demo:**
+  - **Email:** `akuncoba@gmail.com`
+  - **Password:** `akuncoba`
 
-Informasi versi proyek diambil dari `composer.json` (lihat file untuk dependency lengkap).
+---
 
-## Demo & Akses
+## 📸 Tampilan Aplikasi
 
-- Aplikasi berjalan lokal pada: `http://127.0.0.1:8000` jika dijalankan dengan `php artisan serve`.
-- Untuk membagikan sementara aplikasi dari mesin lokal, Anda dapat menggunakan ngrok. Contoh:
+![Dashboard](screenshots/dashboard.png)
+![Pemantauan Tanaman](screenshots/pantau_tanaman.png)
 
-PowerShell / Command Prompt (Windows):
+<p align="center">
+  <a href="https://regumawar.wuaze.com/" target="_blank">
+    <img src="public/img/ZeroHunger.png" width="200" alt="Logo Sistem Pertanian">
+  </a>
+</p>
 
-```powershell
-# jalankan laravel
-php artisan serve
+<h3 align="center">Sistem Pertanian Terpadu (Smart Farming System)</h3>
 
-# di terminal terpisah jalankan ngrok
-ngrok http 8000
-```
+---
 
-Ngrok akan menampilkan URL publik (mis. `https://xxxxx.ngrok.io`) yang mem-forward ke `localhost:8000`.
+## 🚀 Fitur Utama
 
-Catatan: pastikan `php artisan serve` tetap berjalan saat menggunakan ngrok.
+- 📰 **Berita Pertanian:** Menampilkan berita terkini melalui integrasi dengan **NewsAPI**.  
+- 💬 **Forum Diskusi:** Fitur tanya-jawab komunitas dengan kemampuan memilih “jawaban terbaik”.  
+- 🌱 **Manajemen Tanaman:** Menambah, menghapus, dan memantau data tanaman seperti padi dan jagung.  
+- 🌦️ **Saran Berdasarkan Cuaca:** Rekomendasi perawatan tanaman berdasarkan data **OpenWeather API**.  
+- 👤 **Manajemen Akun Pengguna:** Registrasi, login, pengeditan profil, dan penghapusan akun.  
 
-## Quick start (lokal)
+---
 
-Ikuti langkah berikut untuk menjalankan KebunKita di mesin pengembangan Anda.
+## 🛠️ Teknologi yang Digunakan
 
-Prasyarat
+| Kategori | Teknologi |
+|-----------|------------|
+| **Backend** | PHP 8.4.1, Laravel 12.21.0 |
+| **Frontend** | Tailwind CSS 3.4 |
+| **Database** | MySQL / MariaDB |
+| **API Eksternal** | [NewsAPI](https://newsapi.org/) & [OpenWeather API](https://openweathermap.org/api) |
 
-- PHP 8.2+ dan Composer
-- Node.js & npm
-- MySQL / MariaDB
+---
 
-Instalasi
+## ⚙️ Instalasi Lokal
 
+### 1️⃣ Prasyarat
+Pastikan sistem Anda telah terinstal:
+- PHP ≥ 8.4  
+- Composer 2.x  
+- Node.js & npm  
+- MySQL atau MariaDB  
+
+### 2️⃣ Langkah Instalasi
+
+Clone repositori dan masuk ke direktori proyek:
 ```bash
 git clone https://github.com/ricchrstn/KEBUNKITA.git
 cd KEBUNKITA
+
+Instal dependensi backend dan frontend:
+
 composer install
 npm install
-```
 
-Salin file environment:
 
-PowerShell:
+Salin file konfigurasi environment:
 
-```powershell
-Copy-Item .env.example .env
-```
-
-Bash/macOS/Linux:
-
-```bash
 cp .env.example .env
-```
 
-Lalu edit `.env` untuk mengatur koneksi database dan API keys (NewsAPI, OpenWeather):
 
-```env
+Atur konfigurasi .env sesuai dengan database dan API key Anda:
+
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
@@ -208,51 +108,30 @@ DB_DATABASE=nama_database_anda
 DB_USERNAME=root
 DB_PASSWORD=
 
-# API keys
+# API Keys
 NEWS_API_KEY=your_newsapi_key
 OPENWEATHER_API_KEY=your_openweather_key
-```
 
-Generate key aplikasi, migrasi database, dan compile aset:
 
-```bash
+Generate application key:
+
 php artisan key:generate
+
+
+Migrasi database:
+
 php artisan migrate
+
+
+Compile aset frontend:
+
 npm run dev
-```
+# Untuk versi produksi:
+# npm run build
 
-Jalankan server pengembangan:
 
-```bash
+Jalankan server lokal:
+
 php artisan serve
-```
 
-Akses: http://127.0.0.1:8000
-
-## Struktur ringkas
-
-- `app/Http/Controllers` — controller untuk Home, News, Plant, Forum (Question/Answer), Profile, Weather
-- `resources/views` — blade templates untuk layout, halaman berita, forum, profil, dll.
-- `public/img` — logo & aset gambar
-- `database/migrations` — migrasi tabel
-
-## Menjalankan test
-
-Jika Anda menggunakan Pest/Laravel test runner:
-
-```bash
-php artisan test
-```
-
-## Catatan pengembangan
-
-- Beberapa aset (logo/screenshot) mungkin memiliki nama file dengan spasi — jika mengalami masalah tampilkan file path yang di-URL-encode atau ganti namanya agar mudah dikelola.
-- Untuk membagikan situs sementara gunakan ngrok seperti contoh di atas.
-
-## Kontribusi
-
-Jika Anda ingin berkontribusi, silakan buka issue atau kirim pull request. Ikuti standar coding Laravel dan tambahkan test untuk fitur baru.
-
-## Lisensi
-
-MIT
+Akses aplikasi di: http://127.0.0.1:8000
