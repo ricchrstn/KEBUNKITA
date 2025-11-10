@@ -44,22 +44,37 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_admin' => 'boolean',
         ];
     }
 
     /**
-     * Mendefinisikan relasi bahwa seorang User memiliki banyak Plant.
+     * Check if the user is an admin
+     */
+    public function isAdmin(): bool
+    {
+        return $this->is_admin === true;
+    }
+
+    /**
+     * Get the plants for the user
      */
     public function plants(): HasMany
     {
         return $this->hasMany(Plant::class);
     }
 
+    /**
+     * Get the questions for the user
+     */
     public function questions(): HasMany
     {
         return $this->hasMany(Question::class);
     }
 
+    /**
+     * Get the answers for the user
+     */
     public function answers(): HasMany
     {
         return $this->hasMany(Answer::class);

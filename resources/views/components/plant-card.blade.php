@@ -43,3 +43,24 @@
         </div>
     </div>
 </div>
+
+    @once
+        @push('scripts')
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.querySelectorAll('[data-planted-at][data-total-days]').forEach(function(card) {
+                        const plantedAt = new Date(card.getAttribute('data-planted-at'));
+                        const totalDays = parseInt(card.getAttribute('data-total-days'));
+                        const now = new Date();
+                        const diffTime = now - plantedAt;
+                        const age = Math.max(0, Math.floor(diffTime / (1000 * 60 * 60 * 24)));
+                        const percent = Math.min(100, Math.round((age / totalDays) * 100));
+                        const ageSpan = card.querySelector('.plant-age');
+                        const bar = card.querySelector('.progress-bar');
+                        if (ageSpan) ageSpan.textContent = age;
+                        if (bar) bar.style.width = percent + '%';
+                    });
+                });
+            </script>
+        @endpush
+    @endonce

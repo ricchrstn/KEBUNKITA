@@ -66,6 +66,20 @@
                                 {{ __('Edit Akun') }}
                             </x-dropdown-link>
 
+                            {{-- Admin-only management links inside account dropdown --}}
+                            @if (auth()->user()->isAdmin())
+                                <div class="border-t border-border my-2"></div>
+                                <x-dropdown-link :href="route('admin.users.index')">
+                                    {{ __('Kelola Pengguna') }}
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('admin.plants.index')">
+                                    {{ __('Monitor Tanaman') }}
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('admin.forum.index')">
+                                    {{ __('Kelola Forum') }}
+                                </x-dropdown-link>
+                            @endif
+
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <x-dropdown-link :href="route('logout')"

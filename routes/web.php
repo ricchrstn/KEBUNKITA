@@ -43,6 +43,35 @@ Route::middleware('auth')->group(function () {
     Route::get('/tanaman/weather', [WeatherController::class, 'show'])->name('weather.show');
 });
 
+// Admin Routes
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    // Dashboard
+    Route::get('/dashboard', [App\Http\Controllers\Admin\AdminController::class, 'dashboard'])->name('dashboard');
+    
+    // User Management
+    Route::get('/users', [App\Http\Controllers\Admin\AdminController::class, 'users'])->name('users.index');
+    Route::get('/users/{user}/edit', [App\Http\Controllers\Admin\AdminController::class, 'editUser'])->name('users.edit');
+    Route::put('/users/{user}', [App\Http\Controllers\Admin\AdminController::class, 'updateUser'])->name('users.update');
+    Route::delete('/users/{user}', [App\Http\Controllers\Admin\AdminController::class, 'destroyUser'])->name('users.destroy');
+    Route::post('/users/{user}/toggle-admin', [App\Http\Controllers\Admin\AdminController::class, 'toggleAdmin'])->name('users.toggle-admin');
+    
+    // Forum Management
+    Route::get('/forum', [App\Http\Controllers\Admin\AdminController::class, 'forum'])->name('forum.index');
+    Route::get('/forum/questions/create', [App\Http\Controllers\Admin\AdminController::class, 'createQuestion'])->name('forum.questions.create');
+    Route::post('/forum/questions', [App\Http\Controllers\Admin\AdminController::class, 'storeQuestion'])->name('forum.questions.store');
+    Route::get('/forum/questions/{question}/edit', [App\Http\Controllers\Admin\AdminController::class, 'editQuestion'])->name('forum.questions.edit');
+    Route::put('/forum/questions/{question}', [App\Http\Controllers\Admin\AdminController::class, 'updateQuestion'])->name('forum.questions.update');
+    Route::delete('/forum/questions/{question}', [App\Http\Controllers\Admin\AdminController::class, 'deleteQuestion'])->name('forum.questions.delete');
+    Route::delete('/forum/answers/{answer}', [App\Http\Controllers\Admin\AdminController::class, 'deleteAnswer'])->name('forum.answers.delete');
+    
+    // Plant Monitoring
+    Route::get('/plants', [App\Http\Controllers\Admin\AdminPlantController::class, 'index'])->name('plants.index');
+    Route::get('/plants/{plant}', [App\Http\Controllers\Admin\AdminPlantController::class, 'show'])->name('plants.show');
+    Route::get('/plants/{plant}/edit', [App\Http\Controllers\Admin\AdminPlantController::class, 'edit'])->name('plants.edit');
+    Route::put('/plants/{plant}', [App\Http\Controllers\Admin\AdminPlantController::class, 'update'])->name('plants.update');
+    Route::delete('/plants/{plant}', [App\Http\Controllers\Admin\AdminPlantController::class, 'destroy'])->name('plants.destroy');
+});
+
 Route::get('/tentang-kami', [PageController::class, 'about'])->name('about.us');
 
 require __DIR__.'/auth.php';
